@@ -1,0 +1,33 @@
+<div class="px-4 py-5 my-5 text-center">
+  <h1 class="display-5 fw-bold">Hello!</h1>
+  <div class="col-lg-6 mx-auto">
+    <p *ngIf="blockNumber" class="lead mb-4">
+      We are connected to the Goerli blockchain at the block
+      {{ blockNumber }}
+    </p>
+    <div *ngIf="transactions && transactions.length > 0">
+      <p>The list of transactions of this block is</p>
+      <ul>
+        <li *ngFor="let transacton of transactions; let i = index">
+          Transaction #{{ i }}: {{ transactions }}
+        </li>
+      </ul>
+    </div>
+    <div class="d-grid gap-2 d-sm-flex justify-content-sm-center">
+      <button
+        type="button"
+        class="btn btn-primary btn-lg px-4 gap-3"
+        (click)="syncBlock()"
+      >
+        Sync
+      </button>
+      <button
+        type="button"
+        class="btn btn-outline-secondary btn-lg px-4"
+        (click)="clearBlock()"
+      >
+        Clear
+      </button>
+    </div>
+  </div>
+</div>
